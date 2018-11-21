@@ -56,6 +56,7 @@ insert into registrations (registration) values ('CF 1984105');
 
 
 
+insert into routes (route_name) values ('Nyanga');
 insert into routes (route_name) values ('Athlone');
 insert into routes (route_name) values ('Bellville');
 insert into routes (route_name) values ('Cape Town');
