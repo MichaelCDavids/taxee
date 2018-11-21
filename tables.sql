@@ -20,11 +20,10 @@ create table taxi(
     taxi_from int not null,
     foreign key (taxi_from) references routes(id),
     taxi_to int not null,
-    foreign key (taxi_to) references routes(id)
+    foreign key (taxi_to) references routes(id),
+    registration_number int not null,
+    foreign key(registration_number) references registrations(id)
 );
-
-
-
 
 insert into taxi_owner (owner_name) values ('Mbhele');
 insert into taxi_owner (owner_name) values ('Maduna');
