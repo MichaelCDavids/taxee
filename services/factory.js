@@ -1,5 +1,6 @@
 module.exports = function (pool) {
-    function start (){
+    function getTime (distance){
+        eta = distance/averagespeed
         console.log('start Function Called !!!');
     };
     function end (){
