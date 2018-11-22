@@ -2,81 +2,72 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="css/skeleton.css">
-  <link rel="stylesheet" href="css/custom.css">
-
-  <title>TAXEE</title>
-</head>
-
-<body>
-  
-    <div class="container">
-
-        <h1> SELECT TAXI RANK</h1>
-        <hr>
-  <div class='row'>
-    <div class="six columns">
-      <label> FROM:
-        <select>
-          <option value=""></option>
-          <option value></option>
-          <option value=""></option>
-          <option value=""></option>
-        </select>
-      </label>
-    </div>
-  </div>
-  <div class='row'>
-      <div class=" to six columns">
-        <label> To :
-          <select>
-            <option value=""></option>
-            <option value></option>
-            <option value=""></option>
-            <option value=""></option>
-          </select>
-        </label>
-      </div>
-    </div>
-
-  
-  <button class='btn' type="submit"> SUBMIT </button>
-  </div>
-
-
-    </div>
-
-</body>
-
-<html lang="en">
-<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="css/normalize.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <link rel="stylesheet" href="css/skeleton.css">
+    <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/custom.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
     <title>Taxee</title>
 </head>
+
 <body>
-    <div class='container'> 
-        <h1>Taxee App</h1>
-                <div class='row'>
-                    <hr>
-                    <div class='twelve columns'>
-                        <button class='passenger'>Passenger</button>
-                    </div>
+    <div id="app">
+        {{ message }}
+        <div class='container'>
+            <h1>Taxee App</h1>
+            <div class='row'>
+                <hr>
+                <div class='twelve columns'>
+                    <button class='passenger'>Passenger</button>
                 </div>
-        <br>
+            </div>
+            <br>
             <div class='row'>
                 <div class='twelve columns'>
                     <button class='owner'>Taxi Owner</button>
-                </div> 
+                </div>
             </div>
+        </div>
+        <div class="container">
+            <h1>Select Taxi Rank</h1>
+            <hr>
+            <div class='row'>
+                <div class="six columns">
+                    <label> From:
+                        <select>
+                            <option value="1">Nyanga</option>
+                            <option value="2">Cape Town</option>
+                        </select>
+                    </label>
+                </div>
+            </div>
+            <div class='row'>
+                <div class=" to six columns">
+                    <label> To:
+                        <select>
+                            <option value="1">Nyanga</option>
+                            <option value="2">Cape Town</option>
+                        </select>
+                    </label>
+                </div>
+            </div>
+            <button class='btn' type="submit"> SUBMIT </button>
+        </div>
     </div>
+
+
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello Vue!'
+            }
+        })
+    </script>
 </body>
+
 </html>
