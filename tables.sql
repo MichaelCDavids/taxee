@@ -28,7 +28,8 @@ create table taxi(
 create table co_ordinates (
     id serial primary key not null,
     latitude DECIMAL not null,
-    longitude DECIMAL not null
+    longitude DECIMAL not null,
+    route_id int not null
 );
 
 insert into taxi_owner (owner_name) values ('Mbhele');
@@ -80,21 +81,21 @@ insert into routes (route_name) values ('Vangate Mall');
 insert into routes (route_name) values ('Vasco Station');
 insert into routes (route_name) values ('Wynberg');
 
-insert into co_ordinates (latitude, longitude) values ('-33.9923675', '18.5828342');
-insert into co_ordinates (latitude, longitude) values ('-33.96526', '18.5017948');
-insert into co_ordinates (latitude, longitude) values ('-33.8942695', '18.6294384');
-insert into co_ordinates (latitude, longitude) values ('-33.924741', '18.4241074');
-insert into co_ordinates (latitude, longitude) values ('-33.8927495', '18.505935');
-insert into co_ordinates (latitude, longitude) values ('-33.98564975','18.47167952');
-insert into co_ordinates (latitude, longitude) values ('-33.9823317', '18.6424188');
-insert into co_ordinates (latitude, longitude) values ('-33.9295122', '18.5760007');
-insert into co_ordinates (latitude, longitude) values ('-33.9853707', '18.5652306');
-insert into co_ordinates (latitude, longitude) values ('-34.0582933', '18.6724911');
-insert into co_ordinates (latitude, longitude) values ('-33.9445079', '18.5314753');
-insert into co_ordinates (latitude, longitude) values ('-34.04832791','18.60606683');
-insert into co_ordinates (latitude, longitude) values ('-33.95136777','18.49581608');
-insert into co_ordinates (latitude, longitude) values ('-33.9067916', '18.5808115');
-insert into co_ordinates (latitude, longitude) values ('-33.9105696', '18.6122929');
-insert into co_ordinates (latitude, longitude) values ('-33.9612637', '18.5382747');
-insert into co_ordinates (latitude, longitude) values ('-33.9109691', '18.5584566');
-insert into co_ordinates (latitude, longitude) values ('-34.0084456', '18.4661816');
+insert into co_ordinates (latitude, longitude, route_id) values ('-33.9923675', '18.5828342', '1');
+insert into co_ordinates (latitude, longitude, route_id) values ('-33.96526', '18.5017948', '2');
+insert into co_ordinates (latitude, longitude, route_id) values ('-33.8942695', '18.6294384', '3');
+insert into co_ordinates (latitude, longitude, route_id) values ('-33.924741', '18.4241074', '4');
+insert into co_ordinates (latitude, longitude, route_id) values ('-33.8927495', '18.505935', '5');
+insert into co_ordinates (latitude, longitude, route_id) values ('-33.98564975','18.47167952', '6');
+insert into co_ordinates (latitude, longitude, route_id) values ('-33.9823317', '18.6424188', '7');
+insert into co_ordinates (latitude, longitude, route_id) values ('-33.9295122', '18.5760007', '8');
+insert into co_ordinates (latitude, longitude, route_id) values ('-33.9853707', '18.5652306', '9');
+insert into co_ordinates (latitude, longitude, route_id) values ('-34.0582933', '18.6724911', '10');
+insert into co_ordinates (latitude, longitude, route_id) values ('-33.9445079', '18.5314753', '11');
+insert into co_ordinates (latitude, longitude, route_id) values ('-34.04832791','18.60606683', '12');
+insert into co_ordinates (latitude, longitude, route_id) values ('-33.95136777','18.49581608', '13');
+insert into co_ordinates (latitude, longitude, route_id) values ('-33.9067916', '18.5808115', '14');
+insert into co_ordinates (latitude, longitude, route_id) values ('-33.9105696', '18.6122929', '15');
+insert into co_ordinates (latitude, longitude, route_id) values ('-33.9612637', '18.5382747', '16');
+insert into co_ordinates (latitude, longitude, route_id) values ('-33.9109691', '18.5584566', '17');
+insert into co_ordinates (latitude, longitude, route_id) values ('-34.0084456', '18.4661816', '18');
