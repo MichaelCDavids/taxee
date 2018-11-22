@@ -46,8 +46,6 @@ function errorHandler(err, req, res, next) {
 }
 app.use(errorHandler);
 
-
-
 // Routes
 app.get('/', appRoutes.indexGet); 
 app.post('/', appRoutes.indexPost);
