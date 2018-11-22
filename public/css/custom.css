@@ -4,6 +4,10 @@ body{
 }
 
 .container{
+body {
+    background-color: rgb(43, 168, 226);
+}
+.container {
     text-align: center;
     font-weight: bold;
     margin-top: 8em;
@@ -12,6 +16,13 @@ body{
 .btn{
     background-color: brown;
     margin-top: 2em;
+.passenger {
+    background-color: crimson;
+    color: white;
+}
+.owner {
+    background-color: crimson;
+    color: white;
 }
 h1 {
     font-weight: bolder;

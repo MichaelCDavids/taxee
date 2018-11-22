@@ -21,6 +21,11 @@ module.exports = function(pool) {
   function getTaxisByOwner() {
     console.log("getTaxisByOwner Function Called !!!");
   }
+  async function getAllRoutes() {
+    let getRoutes = await pool.query('select route_name from routes');
+    return getRoutes.rows;
+  }
+  
   return {
     start,
     end,
@@ -28,6 +33,7 @@ module.exports = function(pool) {
     tripInfoPost,
     fromTo,
     setFromTo,
-    getTaxisByOwner
+    getTaxisByOwner,
+    getAllRoutes
   };
 };

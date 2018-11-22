@@ -44,14 +44,22 @@
 /* For devices larger than 400px */
 @media (min-width: 400px) {
   .container {
+<<<<<<< HEAD
     width: 100%;
+=======
+    width: 85%;
+>>>>>>> 76426bc5d90dae2673d2ffa68b1c1a1d08ac1aaa
     padding: 0; }
 }
 
 /* For devices larger than 550px */
 @media (min-width: 550px) {
   .container {
+<<<<<<< HEAD
     width: 100%; }
+=======
+    width: 80%; }
+>>>>>>> 76426bc5d90dae2673d2ffa68b1c1a1d08ac1aaa
   .column,
   .columns {
     margin-left: 4%; }
@@ -401,6 +409,7 @@ on small devices, paste the mobile query code up in the buttons section and styl
 there.
 */
 
+<<<<<<< HEAD
 @media (min-width: 412px) {
   body{
     width: 100%;
@@ -414,6 +423,11 @@ there.
     width: 100%
   }
 }
+=======
+
+/* Larger than mobile */
+@media (min-width: 400px) {}
+>>>>>>> 76426bc5d90dae2673d2ffa68b1c1a1d08ac1aaa
 
 /* Larger than phablet (also point when grid becomes active) */
 @media (min-width: 550px) {}
