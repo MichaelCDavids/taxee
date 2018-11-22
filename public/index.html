@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/skeleton.css">
     <link rel="stylesheet" href="css/custom.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
     <title>Taxee</title>
 </head>
 
@@ -26,7 +27,7 @@
             <hr>
             <div class='twelve columns'>
                 Registration Number<input type="text" name='ownerName' class='owners' pattern='/[A-Z]{2}\s\d{3}\W\d{3}|[A-Z]{2}\s\d{3}\W\d{3}|[A-Z]{2}\s\d{6}'
-                    placeholder="CA 987 654" value=''>
+                    placeholder="CA 987 654" value='' v-model=''>
                 <br>
                 <select name="towns" id="">
                     <option value="fromTown">
@@ -42,7 +43,7 @@
         </div>
         <button class='owner'>Submit</button>
         <div class='row'>
-            <div class='twelve columns'>
+            <div class='twelve columns regNumbers'>
                 <li v-for=''>{{Registrations}}</li>
             </div>
         </div>
