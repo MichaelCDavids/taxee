@@ -1,4 +1,5 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,21 +10,38 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
     <title>Taxee</title>
 </head>
+
 <body>
-    <div class='container'> 
+    <div class='container' id='landing'>
         <h1>Taxee App</h1>
-                <div class='row'>
-                    <hr>
-                    <div class='twelve columns'>
-                        <button class='passenger'>Passenger</button>
-                    </div>
-                </div>
-        <br>
-            <div class='row'>
-                <div class='twelve columns'>
-                    <button class='owner'>Taxi Owner</button>
-                </div> 
+        <div class='row'>
+            <hr>
+            <div class='twelve columns'>
+                <button class='passenger'>Passenger</button>
+                <br>
+                <button class='owner'>Taxi Driver</button>
             </div>
+        </div>
+        <div class='row'>
+            <hr>
+            <div class='twelve columns'>
+                Registration Number<input type="text" name='ownerName' class='owners' pattern='/[A-Z]{2}\s\d{3}\W\d{3}|[A-Z]{2}\s\d{3}\W\d{3}|[A-Z]{2}\s\d{6}'
+                    placeholder="CA 987 654" value=''>
+                <br>
+                <select name="towns" id="">
+                    <option value="fromTown">
+                        <label for="">From</label>
+                    </option>
+                </select>
+                <select name="towname" id="">
+                    <option value="toTown">
+                        <label for="">To</label>
+                    </option>
+                </select>
+            </div>
+        </div>
+        <button class='owner'>Submit</button>
     </div>
 </body>
+
 </html>
