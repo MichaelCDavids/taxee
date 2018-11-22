@@ -7,18 +7,35 @@ module.exports = function(instance) {
     res.render("index");
   }
 
-  async function getFromTo(req, res) {
-    let from = req.body.from;
-    let to = req.body.to;
-    let taxis = await instance.fromTo(from, to);
-    res.json(taxis);
+  async function getFromTo(req, res, next) {
+    try {
+      let from = req.body.from;
+      let to = req.body.to;
+      let taxis = await instance.fromTo(from, to);
+      res.json(taxis);
+    } catch (error) {
+      next(error);
+    }
   }
-  async function setFromTo(req, res) {
-    let from = req.body.from;
-    let to = req.body.to;
-    let message = await instance.setFromTo(from, to);
-    req.json(message);
-    //  res.render("trip");
+  async function setFromTo(req, res, next) {
+    try {
+      let from = req.body.from;
+      let to = req.body.to;
+      let message = await instance.setFromTo(from, to);
+      res.json(message);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async function setReg(req, res, next) {
+    try {
+      let regId = req.body.regId;
+      let result = await instance.setReg(regId);
+      res.json(result);
+    } catch (error) {
+      next(error);
+    }
   }
 
   async function start(req, res) {
@@ -43,10 +60,23 @@ module.exports = function(instance) {
     //  res.render("trip");
   }
 
-  async function getTaxisByOwner(req, res) {
-    let ownerName = req.body.fullname;
-    let taxis = await instance.getTaxisByOwner(ownerName);
-    res.json(taxis);
+  async function getTaxisByOwner(req, res, next) {
+    try {
+      let ownerName = req.body.fullname;
+      let taxis = await instance.getTaxisByOwner(ownerName);
+      res.json(taxis);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async function getRegs(req, res, next) {
+    try {
+      let registrations = await instance.getRegistrations();
+      res.json(registrations);
+    } catch (error) {
+      next(error);
+    }
   }
 
   return {
@@ -54,10 +84,12 @@ module.exports = function(instance) {
     indexPost,
     getFromTo,
     setFromTo,
+    setReg,
     start,
     end,
     tripInformationGet,
     tripInformationPost,
-    getTaxisByOwner
+    getTaxisByOwner,
+    getRegs
   };
 };
