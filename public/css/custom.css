@@ -1,26 +1,36 @@
-body{
+body {
     background-attachment: fixed;
     background-image: url('../background.jpg');
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
 
-.container{
+.container {
     text-align: center;
     font-weight: bold;
     margin-top: 8em;
 }
 
-.btn{
+.btn {
     background-color: brown;
     margin-top: 2em;
     color: white;
 }
+
+.passenger {
+    background-color: crimson;
+    color: white;
+}
+
+.owner {
+    background-color: crimson;
+    color: white;
+}
+
 h1 {
     font-weight: bolder;
 }
 
-.to{
-    margin-top : 4em;
-
+.to {
+    margin-top: 4em;
 }
