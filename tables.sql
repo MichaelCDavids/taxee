@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 drop table if exists routes, taxi, taxi_owner, registrations;
 create table taxi_owner
 (
+=======
+drop table if exists routes, taxi, taxi_owner, registrations, co_ordinates;
+create table taxi_owner(
+>>>>>>> coordinates
     id serial primary key not null,
     owner_name text not null
 );
@@ -57,6 +62,20 @@ insert into taxi_owner
     (owner_name)
 values
     ('Nxasana');
+create table co_ordinates (
+    id serial primary key not null,
+    latitude DECIMAL not null,
+    longitude DECIMAL not null,
+    route_id int not null
+);
+
+insert into taxi_owner (owner_name) values ('Mbhele');
+insert into taxi_owner (owner_name) values ('Maduna');
+insert into taxi_owner (owner_name) values ('Cirha');
+insert into taxi_owner (owner_name) values ('Mdumane');
+insert into taxi_owner (owner_name) values ('Xesibe');
+insert into taxi_owner (owner_name) values ('Rhadebe');
+insert into taxi_owner (owner_name) values ('Nxasana');
 
 insert into registrations
     (registration)
@@ -220,3 +239,40 @@ insert into taxi
     (owned_by, taxi_from, taxi_to, registration_number)
 values
     (1, 1, 4, 1);
+insert into routes (route_name) values ('Nyanga');
+insert into routes (route_name) values ('Athlone');
+insert into routes (route_name) values ('Bellville');
+insert into routes (route_name) values ('Cape Town');
+insert into routes (route_name) values ('Century City');
+insert into routes (route_name) values ('Claremont');
+insert into routes (route_name) values ('Delft South');
+insert into routes (route_name) values ('Elsies River');
+insert into routes (route_name) values ('Gugulethu');
+insert into routes (route_name) values ('Khayelitsha Harare');
+insert into routes (route_name) values ('Langa');
+insert into routes (route_name) values ('Mitchells Plain');
+insert into routes (route_name) values ('Mowbray (via Langa)');
+insert into routes (route_name) values ('Parow');
+insert into routes (route_name) values ('Tygerberg Hospital');
+insert into routes (route_name) values ('Vangate Mall');
+insert into routes (route_name) values ('Vasco Station');
+insert into routes (route_name) values ('Wynberg');
+
+insert into co_ordinates (latitude, longitude, route_id) values ('-33.9923675', '18.5828342', '1');
+insert into co_ordinates (latitude, longitude, route_id) values ('-33.96526', '18.5017948', '2');
+insert into co_ordinates (latitude, longitude, route_id) values ('-33.8942695', '18.6294384', '3');
+insert into co_ordinates (latitude, longitude, route_id) values ('-33.924741', '18.4241074', '4');
+insert into co_ordinates (latitude, longitude, route_id) values ('-33.8927495', '18.505935', '5');
+insert into co_ordinates (latitude, longitude, route_id) values ('-33.98564975','18.47167952', '6');
+insert into co_ordinates (latitude, longitude, route_id) values ('-33.9823317', '18.6424188', '7');
+insert into co_ordinates (latitude, longitude, route_id) values ('-33.9295122', '18.5760007', '8');
+insert into co_ordinates (latitude, longitude, route_id) values ('-33.9853707', '18.5652306', '9');
+insert into co_ordinates (latitude, longitude, route_id) values ('-34.0582933', '18.6724911', '10');
+insert into co_ordinates (latitude, longitude, route_id) values ('-33.9445079', '18.5314753', '11');
+insert into co_ordinates (latitude, longitude, route_id) values ('-34.04832791','18.60606683', '12');
+insert into co_ordinates (latitude, longitude, route_id) values ('-33.95136777','18.49581608', '13');
+insert into co_ordinates (latitude, longitude, route_id) values ('-33.9067916', '18.5808115', '14');
+insert into co_ordinates (latitude, longitude, route_id) values ('-33.9105696', '18.6122929', '15');
+insert into co_ordinates (latitude, longitude, route_id) values ('-33.9612637', '18.5382747', '16');
+insert into co_ordinates (latitude, longitude, route_id) values ('-33.9109691', '18.5584566', '17');
+insert into co_ordinates (latitude, longitude, route_id) values ('-34.0084456', '18.4661816', '18');
