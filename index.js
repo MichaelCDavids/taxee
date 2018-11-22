@@ -62,6 +62,7 @@ app.get("/get-from-to", appRoutes.getFromTo);
 app.post("/set-from-to", appRoutes.setFromTo);
 app.post("/set-taxi-reg", appRoutes.setReg);
 app.get("/get-registrations", appRoutes.getRegs);
+app.get("/get-routes", appRoutes.getRoutes);
 //app.post('/start', appRoutes.start);
 // app.post('/end', appRoutes.end);
 app.get("/trip_information", appRoutes.tripInformationGet);

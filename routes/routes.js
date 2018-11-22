@@ -79,6 +79,15 @@ module.exports = function(instance) {
     }
   }
 
+  async function getRoutes(req, res, next) {
+    try {
+      let routes = await instance.getRoutes();
+      res.json(routes);
+    } catch (error) {
+      next(error);
+    }
+  }
+
   return {
     indexGet,
     indexPost,
@@ -90,6 +99,7 @@ module.exports = function(instance) {
     tripInformationGet,
     tripInformationPost,
     getTaxisByOwner,
-    getRegs
+    getRegs,
+    getRoutes
   };
 };
