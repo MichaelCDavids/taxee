@@ -39,10 +39,9 @@ module.exports = function(pool) {
     return "success";
   }
   async function getAllRoutes() {
-    let getRoutes = await pool.query('select route_name from routes');
+    let getRoutes = await pool.query("select route_name from routes");
     return getRoutes.rows;
   }
-  
 
   async function getTaxisByOwner(fullname) {
     let ownerIdList = await pool.query(
@@ -66,6 +65,12 @@ module.exports = function(pool) {
     return registrationList.rows;
   }
 
+  async function getRoutes() {
+    let registrationList = await pool.query("SELECT * FROM routes");
+
+    return registrationList.rows;
+  }
+
   return {
     start,
     end,
@@ -76,6 +81,7 @@ module.exports = function(pool) {
     getTaxisByOwner,
     getAllRoutes,
     setReg,
-    getRegistrations
+    getRegistrations,
+    getRoutes
   };
 };

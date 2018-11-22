@@ -1,73 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-    <link rel="stylesheet" href="css/skeleton.css">
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="css/skeleton.css" />
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/custom.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
     <title>Taxee</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <div id="app">
-        {{ message }}
-        <div class='container'>
-            <h1>Taxee App</h1>
-            <div class='row'>
-                <hr>
-                <div class='twelve columns'>
-                    <button class='passenger'>Passenger</button>
-                </div>
-            </div>
-            <br>
-            <div class='row'>
-                <div class='twelve columns'>
-                    <button class='owner'>Taxi Owner</button>
-                </div>
-            </div>
+      {{ user }}
+      <div v-if="user === 'none'" class="container">
+        <h1>Taxee App</h1>
+        <div class="row">
+          <hr />
+          <div class="twelve columns">
+            <button v-on:click="setPassanger" class="passenger">
+              Passenger
+            </button>
+          </div>
         </div>
-        <div class="container">
-            <h1>Select Taxi Rank</h1>
-            <hr>
-            <div class='row'>
-                <div class="six columns">
-                    <label> From:
-                        <select>
-                            <option value="1">Nyanga</option>
-                            <option value="2">Cape Town</option>
-                        </select>
-                    </label>
-                </div>
-            </div>
-            <div class='row'>
-                <div class=" to six columns">
-                    <label> To:
-                        <select>
-                            <option value="1">Nyanga</option>
-                            <option value="2">Cape Town</option>
-                        </select>
-                    </label>
-                </div>
-            </div>
-            <button class='btn' type="submit"> SUBMIT </button>
+        <br />
+        <div class="row">
+          <div class="twelve columns">
+            <button v-on:click="setDriver" class="owner">Taxi Driver</button>
+          </div>
         </div>
+      </div>
+      <div v-else class="container">
+        <h1>Select Taxi Rank</h1>
+        <hr />
+        <div class="row">
+          <div class="six columns">
+            <label>
+              From:
+              <select v-model="from" v-on:change="onChangeFrom">
+                <option :value="null"></option>
+                <option v-for="route in routes" v-bind:value="route.id">{{
+                  route.route_name
+                }}</option>
+              </select>
+            </label>
+          </div>
+        </div>
+        <div class="row">
+          <div class=" to six columns">
+            <label>
+              To:
+              <select v-model="to" v-on:change="onChangeTo">
+                <option :value="null"></option>
+                <option v-for="route in routes" v-bind:value="route.id">{{
+                  route.route_name
+                }}</option>
+              </select>
+            </label>
+          </div>
+        </div>
+        <button v-on:click="getFromTo" class="btn" type="submit">SUBMIT</button>
+      </div>
     </div>
 
-
-
     <script>
-        var app = new Vue({
-            el: '#app',
-            data: {
-                message: 'Hello Vue!'
-            }
-        })
-    </script>
-</body>
+      var app = new Vue({
+        el: "#app",
+        data: {
+          message: "Hello",
+          user: "none",
+          routes: [],
+          from: "",
+          to: ""
+        },
+        methods: {
+          setPassanger: async function() {
+            const response = await axios.get("/get-routes");
 
+            this.routes = response.data;
+            console.log(this.routes);
+            this.user = "passanger";
+          },
+          setDriver: async function() {
+            const response = await axios.get("/get-routes");
+            this.routes = response.data;
+            console.log(this.routes);
+            this.user = "driver";
+          },
+          onChangeFrom: function() {
+            let self = this.from;
+            console.log(self);
+          },
+          onChangeTo: function() {
+            let self = this.to;
+            console.log(self);
+          },
+          getFromTo: async function() {
+            let from = this.from;
+            let to = this.to;
+            const response = await axios.get("/get-from-to", { from, to });
+          }
+        }
+      });
+    </script>
+  </body>
 </html>
