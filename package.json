@@ -1,12 +1,12 @@
 {
-  "name": "strava_app",
+  "name": "taxee",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "main": "node index.js",
     "test": "mocha --exit",
-    "start": "nodemon index.js"
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
@@ -22,8 +22,13 @@
     "geolocation": "^0.2.0",
     "geolocator": "^2.1.3",
     "moment": "^2.22.2",
+<<<<<<< HEAD
     "node-localstorage": "^1.3.1",
     "pg": "^7.4.3"
+=======
+    "pg": "^7.4.3",
+    "request": "^2.88.0"
+>>>>>>> 2ace1c36d9e200e59c8f0c8c856912d7d660b739
   },
   "devDependencies": {}
 }

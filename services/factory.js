@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const LocalStorage = require("node-localstorage").LocalStorage;
 const localStorage = new LocalStorage("./taxi_id");
 
@@ -86,3 +87,27 @@ module.exports = function(pool) {
     getRoutes
   };
 };
+=======
+module.exports = function (pool) {
+    function getTime (distance){
+        eta = distance/averagespeed
+        console.log('start Function Called !!!');
+    };
+    function end (){
+        console.log('end Function Called !!!');
+    }; 
+    function tripInfoGet (){
+        console.log('tripInfoGet Function Called !!!');
+    };
+    function tripInfoPost (){
+        console.log('tripInfoPost Function Called !!!');
+    };
+     
+    return {
+        start,
+        end,
+        tripInfoGet,
+        tripInfoPost
+    };
+};
+>>>>>>> 2ace1c36d9e200e59c8f0c8c856912d7d660b739
