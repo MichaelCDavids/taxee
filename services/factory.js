@@ -16,9 +16,15 @@ module.exports = function(pool) {
   }
   async function fromTo(from, to) {
     let taxis = await pool.query(
-      "select route_one.id, route_one.route_name AS from_route, route_two.id, route_two.route_name AS to_route from taxi join routes route_one on route_one.id = taxi.taxi_from join routes route_two on route_two.id = taxi.taxi_to where taxi_from = $1 AND taxi_to = $2",
+      "select  route_one.route_name AS from_route, route_two.route_name AS to_route from taxi join routes route_one on route_one.id = taxi.taxi_from join routes route_two on route_two.id = taxi.taxi_to where taxi_from = $1 AND taxi_to = $2",
       [from, to]
     );
+
+    let coOrdinates = await getRouteCordinates(from, to);
+
+    localStorage.removeItem("coOrdinates");
+
+    localStorage.setItem("coOrdinates", JSON.stringify(coOrdinates));
 
     return taxis.rows;
   }
@@ -71,6 +77,38 @@ module.exports = function(pool) {
     return registrationList.rows;
   }
 
+  async function getRouteCordinates(from, to) {
+    let from_co_ordinates = await pool.query(
+      "select latitude, longitude from co_ordinates where route_id =$1",
+      [from]
+    );
+
+    let to_co_ordinates = await pool.query(
+      "select latitude, longitude from co_ordinates where route_id =$1",
+      [to]
+    );
+
+    let fromCoOrdinate = from_co_ordinates.rows[0];
+    let toCoOrdinate = to_co_ordinates.rows[0];
+
+    return { fromCoOrdinate, toCoOrdinate };
+  }
+
+  function getCordinates() {
+    let cordinate = JSON.parse(localStorage.getItem("coOrdinates"));
+
+    return cordinate;
+  }
+
+  function setDistance(distInM) {
+    localStorage.setItem("distInM", distInM);
+  }
+
+  function getDistance() {
+    let dist = localStorage.getItem("distInM");
+    return dist;
+  }
+
   return {
     start,
     end,
@@ -82,6 +120,9 @@ module.exports = function(pool) {
     getAllRoutes,
     setReg,
     getRegistrations,
-    getRoutes
+    getRoutes,
+    getCordinates,
+    setDistance,
+    getDistance
   };
 };
