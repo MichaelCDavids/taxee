@@ -1,40 +1,408 @@
-drop table if exists routes, passengers;
+drop table if exists routes, taxi, taxi_owner, registrations, co_ordinates;
 
-create table modes(
+create table taxi_owner
+(
+
     id serial primary key not null,
-    type_of_transport text not null
+    owner_name text not null
+);
+create table registrations
+(
+    id serial primary key not null,
+    registration text not null
 );
 
-insert into modes (type_of_transport) values ('Bus');
-insert into modes (type_of_transport) values ('Train');
-insert into modes (type_of_transport) values ('Taxi');
-
-create table routes(
+create table routes
+(
     id serial primary key not null,
     route_name text not null
 );
 
-insert into routes (route_name) values ('A1');
-insert into routes (route_name) values ('A2');
-insert into routes (route_name) values ('A3');
-insert into routes (route_name) values ('B1');
-
-create table passengers(
+create table taxi
+(
     id serial primary key not null,
-    passenger int not null
-    -- route_selected int not null,
-    -- foreign key (route_selected) references routes(id)
+    owned_by int not null,
+    foreign key (owned_by) references taxi_owner(id),
+    taxi_from int not null,
+    foreign key (taxi_from) references routes(id),
+    taxi_to int not null,
+    foreign key (taxi_to) references routes(id),
+    registration_number int not null,
+    foreign key(registration_number) references registrations(id)
 );
 
-insert into passengers (passenger) values ('Mike');
-insert into passengers (passenger) values ('Greg');
-insert into passengers (passenger) values ('Lorenzo');
-insert into passengers (passenger) values ('Bus');
-
-create table history(
+create table co_ordinates
+(
     id serial primary key not null,
-    passenger_id int not null,
-    foreign key (passenger_id) references passengers(id)
+    latitude DECIMAL not null,
+    longitude DECIMAL not null,
+    route_id int not null,
+    foreign key(route_id) references routes(id)
 );
 
+insert into taxi_owner
+    (owner_name)
+values
+    ('Mbhele');
+insert into taxi_owner
+    (owner_name)
+values
+    ('Maduna');
+insert into taxi_owner
+    (owner_name)
+values
+    ('Cirha');
+insert into taxi_owner
+    (owner_name)
+values
+    ('Mdumane');
+insert into taxi_owner
+    (owner_name)
+values
+    ('Xesibe');
+insert into taxi_owner
+    (owner_name)
+values
+    ('Rhadebe');
+insert into taxi_owner
+    (owner_name)
+values
+    ('Nxasana');
 
+
+insert into taxi_owner
+    (owner_name)
+values
+    ('Mbhele');
+insert into taxi_owner
+    (owner_name)
+values
+    ('Maduna');
+insert into taxi_owner
+    (owner_name)
+values
+    ('Cirha');
+insert into taxi_owner
+    (owner_name)
+values
+    ('Mdumane');
+insert into taxi_owner
+    (owner_name)
+values
+    ('Xesibe');
+insert into taxi_owner
+    (owner_name)
+values
+    ('Rhadebe');
+insert into taxi_owner
+    (owner_name)
+values
+    ('Nxasana');
+
+insert into registrations
+    (registration)
+values
+    ('CA 256-669');
+insert into registrations
+    (registration)
+values
+    ('CY 589-145');
+insert into registrations
+    (registration)
+values
+    ('CA 489-225');
+insert into registrations
+    (registration)
+values
+    ('CF 623-841');
+insert into registrations
+    (registration)
+values
+    ('CEY 887-361');
+insert into registrations
+    (registration)
+values
+    ('CY 713-369');
+insert into registrations
+    (registration)
+values
+    ('CA 555-197');
+insert into registrations
+    (registration)
+values
+    ('CEY 133-197');
+insert into registrations
+    (registration)
+values
+    ('CA 998-361');
+insert into registrations
+    (registration)
+values
+    ('CF 9984125');
+insert into registrations
+    (registration)
+values
+    ('CV 713-369');
+insert into registrations
+    (registration)
+values
+    ('CA 575-991');
+insert into registrations
+    (registration)
+values
+    ('CEY 123-397');
+insert into registrations
+    (registration)
+values
+    ('CA 198-061');
+insert into registrations
+    (registration)
+values
+    ('CF 0084325');
+insert into registrations
+    (registration)
+values
+    ('CY 703-309');
+insert into registrations
+    (registration)
+values
+    ('CA 155-100');
+insert into registrations
+    (registration)
+values
+    ('CEY 003-197');
+insert into registrations
+    (registration)
+values
+    ('CA 938-360');
+insert into registrations
+    (registration)
+values
+    ('CF 1984105');
+
+
+
+insert into routes
+    (route_name)
+values
+    ('Nyanga');
+insert into routes
+    (route_name)
+values
+    ('Athlone');
+insert into routes
+    (route_name)
+values
+    ('Bellville');
+insert into routes
+    (route_name)
+values
+    ('Cape Town');
+insert into routes
+    (route_name)
+values
+    ('Century City');
+insert into routes
+    (route_name)
+values
+    ('Claremont');
+insert into routes
+    (route_name)
+values
+    ('Delft South');
+insert into routes
+    (route_name)
+values
+    ('Elsies River');
+insert into routes
+    (route_name)
+values
+    ('Gugulethu');
+insert into routes
+    (route_name)
+values
+    ('Khayelitsha Harare');
+insert into routes
+    (route_name)
+values
+    ('Langa');
+insert into routes
+    (route_name)
+values
+    ('Mitchells Plain');
+insert into routes
+    (route_name)
+values
+    ('Mowbray (via Langa)');
+insert into routes
+    (route_name)
+values
+    ('Parow');
+insert into routes
+    (route_name)
+values
+    ('Tygerberg Hospital');
+insert into routes
+    (route_name)
+values
+    ('Vangate Mall');
+insert into routes
+    (route_name)
+values
+    ('Vasco Station');
+insert into routes
+    (route_name)
+values
+    ('Wynberg');
+
+
+
+insert into taxi
+    (owned_by, taxi_from, taxi_to, registration_number)
+values
+    (1, 1, 4, 1);
+insert into routes
+    (route_name)
+values
+    ('Nyanga');
+insert into routes
+    (route_name)
+values
+    ('Athlone');
+insert into routes
+    (route_name)
+values
+    ('Bellville');
+insert into routes
+    (route_name)
+values
+    ('Cape Town');
+insert into routes
+    (route_name)
+values
+    ('Century City');
+insert into routes
+    (route_name)
+values
+    ('Claremont');
+insert into routes
+    (route_name)
+values
+    ('Delft South');
+insert into routes
+    (route_name)
+values
+    ('Elsies River');
+insert into routes
+    (route_name)
+values
+    ('Gugulethu');
+insert into routes
+    (route_name)
+values
+    ('Khayelitsha Harare');
+insert into routes
+    (route_name)
+values
+    ('Langa');
+insert into routes
+    (route_name)
+values
+    ('Mitchells Plain');
+insert into routes
+    (route_name)
+values
+    ('Mowbray (via Langa)');
+insert into routes
+    (route_name)
+values
+    ('Parow');
+insert into routes
+    (route_name)
+values
+    ('Tygerberg Hospital');
+insert into routes
+    (route_name)
+values
+    ('Vangate Mall');
+insert into routes
+    (route_name)
+values
+    ('Vasco Station');
+insert into routes
+    (route_name)
+values
+    ('Wynberg');
+
+insert into co_ordinates
+    (latitude, longitude, route_id)
+values
+    ('-33.9923675', '18.5828342', '1');
+insert into co_ordinates
+    (latitude, longitude, route_id)
+values
+    ('-33.96526', '18.5017948', '2');
+insert into co_ordinates
+    (latitude, longitude, route_id)
+values
+    ('-33.8942695', '18.6294384', '3');
+insert into co_ordinates
+    (latitude, longitude, route_id)
+values
+    ('-33.924741', '18.4241074', '4');
+insert into co_ordinates
+    (latitude, longitude, route_id)
+values
+    ('-33.8927495', '18.505935', '5');
+insert into co_ordinates
+    (latitude, longitude, route_id)
+values
+    ('-33.98564975', '18.47167952', '6');
+insert into co_ordinates
+    (latitude, longitude, route_id)
+values
+    ('-33.9823317', '18.6424188', '7');
+insert into co_ordinates
+    (latitude, longitude, route_id)
+values
+    ('-33.9295122', '18.5760007', '8');
+insert into co_ordinates
+    (latitude, longitude, route_id)
+values
+    ('-33.9853707', '18.5652306', '9');
+insert into co_ordinates
+    (latitude, longitude, route_id)
+values
+    ('-34.0582933', '18.6724911', '10');
+insert into co_ordinates
+    (latitude, longitude, route_id)
+values
+    ('-33.9445079', '18.5314753', '11');
+insert into co_ordinates
+    (latitude, longitude, route_id)
+values
+    ('-34.04832791', '18.60606683', '12');
+insert into co_ordinates
+    (latitude, longitude, route_id)
+values
+    ('-33.95136777', '18.49581608', '13');
+insert into co_ordinates
+    (latitude, longitude, route_id)
+values
+    ('-33.9067916', '18.5808115', '14');
+insert into co_ordinates
+    (latitude, longitude, route_id)
+values
+    ('-33.9105696', '18.6122929', '15');
+insert into co_ordinates
+    (latitude, longitude, route_id)
+values
+    ('-33.9612637', '18.5382747', '16');
+insert into co_ordinates
+    (latitude, longitude, route_id)
+values
+    ('-33.9109691', '18.5584566', '17');
+insert into co_ordinates
+    (latitude, longitude, route_id)
+values
+    ('-34.0084456', '18.4661816', '18');
