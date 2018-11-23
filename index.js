@@ -58,7 +58,7 @@ app.use(errorHandler);
 // Routes
 app.get("/", appRoutes.indexGet);
 app.post("/", appRoutes.indexPost);
-app.get("/get-from-to", appRoutes.getFromTo);
+app.get("/get-from-to/:from/:to", appRoutes.getFromTo);
 app.post("/set-from-to", appRoutes.setFromTo);
 app.post("/set-taxi-reg", appRoutes.setReg);
 app.get("/get-registrations", appRoutes.getRegs);

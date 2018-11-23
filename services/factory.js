@@ -15,6 +15,7 @@ module.exports = function(pool) {
     console.log("tripInfoPost Function Called !!!");
   }
   async function fromTo(from, to) {
+    console.log(from, to)
     let taxis = await pool.query(
       "select route_one.route_name AS from_route, route_two.route_name AS to_route from taxi join routes route_one on route_one.id = taxi.taxi_from join routes route_two on route_two.id = taxi.taxi_to where taxi_from = $1 AND taxi_to = $2",
       [from, to]
