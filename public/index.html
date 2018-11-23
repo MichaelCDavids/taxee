@@ -91,16 +91,16 @@
           },
           onChangeFrom: function() {
             let self = this.from;
-            console.log(self);
           },
           onChangeTo: function() {
             let self = this.to;
-            console.log(self);
           },
           getFromTo: async function() {
             let from = this.from;
             let to = this.to;
-            const response = await axios.get("/get-from-to", { from, to });
+
+            const response = await axios.get("/get-from-to/" + from + "/" + to);
+            console.log(response.data);
           }
         }
       });

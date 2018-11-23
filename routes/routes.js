@@ -9,8 +9,7 @@ module.exports = function(instance) {
 
   async function getFromTo(req, res, next) {
     try {
-      let from = req.body.from;
-      let to = req.body.to;
+      const { from, to } = req.params;
       let taxis = await instance.fromTo(from, to);
       res.json(taxis);
     } catch (error) {
