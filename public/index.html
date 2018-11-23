@@ -8,6 +8,13 @@
     <link rel="stylesheet" href="css/skeleton.css" />
     <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/custom.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
     <title>Taxee</title>
   </head>
@@ -30,6 +37,19 @@
           <div class="twelve columns">
             <button v-on:click="setDriver" class="owner">Taxi Driver</button>
           </div>
+        </div>
+      </div>
+      <div v-else-if="user === 'taxi'" class="container">
+        <div class="card" style="width: 18rem;">
+          <div class="card-header">Incoming Taxis</div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">CA 987-232</li>
+            10 min away
+            <li class="list-group-item">CW 987-123</li>
+            30 min away
+            <li class="list-group-item">CJ 897-567</li>
+            60 min away
+          </ul>
         </div>
       </div>
       <div v-else class="container">
@@ -73,7 +93,8 @@
           user: "none",
           routes: [],
           from: "",
-          to: ""
+          to: "",
+          taxis: false
         },
         methods: {
           setPassanger: async function() {
@@ -91,16 +112,18 @@
           },
           onChangeFrom: function() {
             let self = this.from;
-            console.log(self);
           },
           onChangeTo: function() {
             let self = this.to;
-            console.log(self);
           },
           getFromTo: async function() {
             let from = this.from;
             let to = this.to;
-            const response = await axios.get("/get-from-to", { from, to });
+
+            this.user = "taxi";
+
+            const response = await axios.get("/get-from-to/" + from + "/" + to);
+            console.log(response.data);
           }
         }
       });

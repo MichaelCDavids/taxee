@@ -14,7 +14,7 @@ if (process.env.DATABASE_URL && !local) {
 }
 const connectionString =
   process.env.DATABASE_URL ||
-  "postgresql://coder:pg123@localhost:5432/taxee_app_database";
+  "postgresql://postgres:lavish@localhost:5432/taxee_app_database";
 const pool = new Pool({
   connectionString,
   ssl: useSSL
@@ -55,28 +55,14 @@ function errorHandler(err, req, res, next) {
 }
 app.use(errorHandler);
 
-<<<<<<< HEAD
 // Routes
-app.get("/", appRoutes.indexGet);
-app.post("/", appRoutes.indexPost);
-app.get("/get-from-to", appRoutes.getFromTo);
+
+app.get("/get-from-to/:from/:to", appRoutes.getFromTo);
 app.post("/set-from-to", appRoutes.setFromTo);
 app.post("/set-taxi-reg", appRoutes.setReg);
 app.get("/get-registrations", appRoutes.getRegs);
 app.get("/get-routes", appRoutes.getRoutes);
 //app.post('/start', appRoutes.start);
-=======
-
-
-
-
-
-
-// Routes
-app.get('/', appRoutes.indexGet);
-app.post('/', appRoutes.indexPost);
-// app.post('/start', appRoutes.start);
->>>>>>> 2ace1c36d9e200e59c8f0c8c856912d7d660b739
 // app.post('/end', appRoutes.end);
 app.get("/trip_information", appRoutes.tripInformationGet);
 app.post("/trip_information", appRoutes.tripInformationPost);
